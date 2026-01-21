@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大學 GPA & 總平均計算機</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 成績計算機</h1>
+        
+        <div class="card">
+            <div class="header-row">
+                <span>課程名稱 (選填)</span>
+                <span>類別</span>
+                <span>學分</span>
+                <span>分數 (0-100)</span>
+                <span>操作</span>
+            </div>
+            
+            <div id="course-list">
+                <!-- 課程輸入列將由 JS 動態產生 -->
+            </div>
+
+            <button id="add-btn" class="btn secondary">+ 新增課程</button>
+        </div>
+
+        <div class="actions">
+            <button id="calc-btn" class="btn primary">計算成績</button>
+            <button id="clear-btn" class="btn secondary">清除所有資料</button>
+        </div>
+
+        <div id="result" class="result-card hidden">
+            <h2>計算結果</h2>
+            <p>總學分: <span id="total-credits">0</span></p>
+            <p>加權總平均: <span id="average-score">0.00</span></p>
+            <p>GPA (4.0制): <span id="gpa-score">0.00</span></p>
+            <p>平均等級: <span id="average-grade">-</span></p>
+            <div id="category-details" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd;"></div>
+            <div class="chart-container" style="position: relative; height:300px; width:100%; margin-top: 20px;"><canvas id="creditChart"></canvas></div>
+            <button id="export-btn" class="btn success">匯出結果 (圖片)</button>
+        </div>
+
+        <div class="card">
+            <h2>🎯 目標 GPA 預測</h2>
+            <div class="target-row">
+                <input type="number" id="target-gpa" placeholder="目標 GPA (例如 3.8)" step="0.01" min="0" max="4.0">
+                <input type="number" id="planned-credits" placeholder="預計修課學分 (選填)" step="1" min="0">
+            </div>
+            <button id="calc-target-btn" class="btn primary" style="margin-top: 10px;">計算需求</button>
+            <div id="target-result" class="hidden" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd; color: #555;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
